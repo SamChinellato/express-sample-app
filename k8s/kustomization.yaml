@@ -1,10 +1,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - deployment.yaml
-  - service.yaml
-  - route.yaml
+- deployment.yaml
+- service.yaml
+- route.yaml
 commonLabels:
-  app: express-sample-app
-  app.kubernetes.io/instance: express-sample-app-instance
-  app.kubernetes.io/name: express-sample-app
+  app: sam-chinellato-express-sample-app
+  app.kubernetes.io/instance: sam-chinellato-express-sample-app-instance
+  app.kubernetes.io/name: sam-chinellato-express-sample-app
+images:
+- name: '*'
+  newName: quay.io/samchinellato/demo-express-app
+  newTag: a1ca3c76a0423c5e04d8c02f491848d2f6ab1614
+commonAnnotations:
+  appls: ""
